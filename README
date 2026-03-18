@@ -1,0 +1,86 @@
+# Medical RAG Chatbot
+
+A Retrieval-Augmented Generation (RAG) based chatbot that answers medical-related questions using a custom document knowledge base. The system retrieves relevant information from medical PDFs and generates responses using a large language model.
+
+## Overview
+
+This project combines document retrieval with language generation to provide accurate, context-based answers. It uses a vector database for semantic search, reranking for improved relevance, and an LLM for final response generation.
+
+## Features
+
+- PDF-based document ingestion and processing
+- Semantic search using vector embeddings
+- Pinecone vector database integration
+- Reranking using a CrossEncoder model
+- LLM-based response generation via OpenRouter
+- Clean and modern chat user interface
+- Medical safety prompt to prevent unsafe or misleading outputs
+
+## Tech Stack
+
+Backend:
+- Python
+- LangChain
+- Pinecone
+- Sentence Transformers
+- OpenRouter (LLaMA 3 model)
+
+Frontend:
+- HTML
+- CSS
+- JavaScript
+
+## Setup Instructions
+
+### 1. Clone the repository
+
+git clone https://github.com/YOUR_USERNAME/medical-rag-chatbot.git  
+cd medical-rag-chatbot
+
+### 2. Install dependencies
+
+pip install -r requirements.txt
+
+### 3. Configure environment variables
+
+Set the following environment variables:
+
+PINECONE_API_KEY=your_pinecone_api_key  
+OPENROUTER_API_KEY=your_openrouter_api_key
+
+### 4. Run the application
+
+Start the backend:
+
+cd backend  
+python app.py
+
+Then open the frontend in your browser:
+
+frontend/index.html
+
+## How It Works
+
+1. PDFs are loaded and split into smaller chunks.  
+2. Text chunks are converted into embeddings.  
+3. Embeddings are stored in the Pinecone vector database.  
+4. The user query is converted into an embedding.  
+5. Relevant documents are retrieved using similarity search.  
+6. Retrieved documents are reranked using a CrossEncoder model.  
+7. The final context is passed to the LLM.  
+8. The chatbot generates a response based only on retrieved context.  
+
+## Usage
+
+- Enter a medical-related question in the chat interface.  
+- The system retrieves relevant information from the medical knowledge base (e.g., The Gale Encyclopedia of Medicine).  
+- A response is generated based on the retrieved context.  
+- If insufficient data is available, the chatbot provides a safe fallback response.  
+
+## Disclaimer
+
+This project is intended for educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult a qualified healthcare provider for medical concerns.
+
+## Author
+
+Shyama Sodha
